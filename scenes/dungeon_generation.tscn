@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf37hs7f0sxa5"]
+
+[ext_resource type="Script" uid="uid://pvbqn6cwf76n" path="res://scripts/dungeon_generation.gd" id="1_3n6r7"]
+[ext_resource type="Texture2D" uid="uid://dl7jtgeutdrk" path="res://assets/tilesets/TileSet.png" id="2_nn07g"]
+[ext_resource type="PackedScene" uid="uid://dmvjr1012x68w" path="res://scenes/player.tscn" id="3_nn07g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xu24q"]
+texture = ExtResource("2_nn07g")
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e1dh2"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_xu24q")
+
+[node name="DungeonGeneration" type="Node2D" node_paths=PackedStringArray("tilemap", "player")]
+script = ExtResource("1_3n6r7")
+tilemap = NodePath("TileMapLayer")
+player = NodePath("player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_e1dh2")
+
+[node name="player" parent="." instance=ExtResource("3_nn07g")]
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
