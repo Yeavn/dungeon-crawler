@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 150
-
 @export var damage = 50
+@export var attack_range = 50
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ray_cast: RayCast2D = $RayCast2D
@@ -27,7 +27,8 @@ func get_input():
 			if ray_cast.is_colliding():
 				var colider = ray_cast.get_collider()
 				if colider.is_in_group("enemies"):
-					colider.take_damage(damage)
+					if global_position.distance_to(colider.global_position) <= attack_range:
+						colider.take_damage(damage)
 		elif Input.is_action_pressed("left"):
 			animated_sprite.play("run_left")
 			direction = "left"

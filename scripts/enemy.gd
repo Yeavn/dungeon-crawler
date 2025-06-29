@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
-@onready var healthbar: Label = $Healthbar
+@onready var healthbar: ProgressBar = $ProgressBar
+
 
 var player
 
-@export var speed : float = 100.0
-@export var health = 100
-@export var player_distance : int = 50
-@export var start_pathfinding_distance : int = 100
+@export var speed := 100.0
+@export var health := 100.0
+@export var player_distance := 50
+@export var start_pathfinding_distance := 100
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -40,6 +41,6 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	print("Genger nimmt ", amount, " Schaden!")
 	print("Genger hat ", health, " Leben!")
-	healthbar.text = str(health) + " HP"
+	healthbar.value = health
 	if health <= 0:
 		queue_free()

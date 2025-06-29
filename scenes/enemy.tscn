@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://besajm1uxkguu"]
+[gd_scene load_steps=12 format=3 uid="uid://besajm1uxkguu"]
 
 [ext_resource type="Texture2D" uid="uid://bdmmwk4dv4hje" path="res://assets/characters/Characters-part-2.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://v1tuja0kajbs" path="res://scripts/enemy.gd" id="1_md0e3"]
@@ -48,6 +48,12 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md0e3"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ra3w"]
+bg_color = Color(0.572669, 1.1792e-06, 3.36915e-07, 1)
+
 [node name="enemy" type="CharacterBody2D"]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_md0e3")
@@ -68,12 +74,23 @@ path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
 
-[node name="Healthbar" type="Label" parent="."]
-offset_left = -27.0
-offset_top = 10.0
-offset_right = 27.0
-offset_bottom = 33.0
-size_flags_horizontal = 4
-text = "100 HP"
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.6667
+offset_top = -33.3333
+offset_right = 15.3333
+offset_bottom = -6.33334
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.2)
+theme_override_styles/background = SubResource("StyleBoxFlat_md0e3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ra3w")
+value = 100.0
+rounded = true
+show_percentage = false
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
