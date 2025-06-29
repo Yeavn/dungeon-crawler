@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c73ob5ykppls5"]
+[gd_scene load_steps=17 format=3 uid="uid://c73ob5ykppls5"]
 
 [ext_resource type="Script" uid="uid://c1y01p14jqwcl" path="res://scripts/normal_chest.gd" id="1_7a5wq"]
 [ext_resource type="Texture2D" uid="uid://jvgsv5r47he0" path="res://assets/chest/Chests.png" id="1_qml46"]
@@ -85,11 +85,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qml46"]
 size = Vector2(28, 20)
 
-[node name="normal_chest" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8e16"]
+size = Vector2(33.6948, 31.8734)
+
+[node name="normal_chest" type="Area2D" node_paths=PackedStringArray("collision_shape")]
 scale = Vector2(0.5, 0.5)
 collision_mask = 3
 script = ExtResource("1_7a5wq")
 item_scene = ExtResource("2_w8e16")
+number_of_items = 4
+collision_shape = NodePath("Area2D/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(24, -16)
@@ -101,6 +106,13 @@ shape = SubResource("RectangleShape2D_qml46")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.761
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, -10)
+scale = Vector2(2.96782, 2.76092)
+shape = SubResource("RectangleShape2D_w8e16")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
