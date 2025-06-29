@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://dyd6xlxug42ig"]
+[gd_scene load_steps=12 format=4 uid="uid://dyd6xlxug42ig"]
 
 [ext_resource type="PackedScene" uid="uid://dmvjr1012x68w" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="TileSet" uid="uid://cl3tkyb7j7g7u" path="res://assets/tilesets/main.tres" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c73ob5ykppls5" path="res://scenes/chests/normal_chest.tscn" id="3_sugp2"]
+[ext_resource type="Resource" uid="uid://6w6tdq1l18sp" path="res://inventory/players_inventory.tres" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://710bna22prwq" path="res://scripts/enemy_area_1.gd" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://buhkkdpg0w5uy" path="res://inventory/inventory_item.gd" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://besajm1uxkguu" path="res://scenes/enemy.tscn" id="5_tbgi4"]
+[ext_resource type="Resource" uid="uid://c7cb0iabg662h" path="res://inventory/items/schwert.tres" id="6_choun"]
+[ext_resource type="Resource" uid="uid://bvl3osaljuu5o" path="res://inventory/items/speer.tres" id="7_ya4ey"]
+[ext_resource type="Resource" uid="uid://dko3y2e4f7eoi" path="res://inventory/items/speed_potion.tres" id="10_choun"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
 size = Vector2(93.5131, 81.25)
@@ -28,15 +33,12 @@ tile_set = ExtResource("2_sugp2")
 unique_name_in_owner = true
 position = Vector2(40, 32)
 scale = Vector2(0.7, 0.7)
+inventory = ExtResource("3_tefeu")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 zoom = Vector2(4, 4)
 limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="normal_chest" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(32, -12)
-number_of_items = 2
 
 [node name="Spawnzonen" type="Node2D" parent="."]
 
@@ -99,3 +101,20 @@ collision_shape = NodePath("CollisionShape2D")
 position = Vector2(2, 1.52588e-05)
 scale = Vector2(3.24, 0.756757)
 shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="Chests" type="Node2D" parent="."]
+
+[node name="normal_chest" parent="Chests" instance=ExtResource("3_sugp2")]
+position = Vector2(32, -12)
+number_of_items = 3
+items = Array[ExtResource("5_85g3d")]([ExtResource("6_choun"), ExtResource("7_ya4ey"), ExtResource("10_choun")])
+
+[node name="normal_chest2" parent="Chests" instance=ExtResource("3_sugp2")]
+position = Vector2(-429, -257)
+number_of_items = 3
+items = Array[ExtResource("5_85g3d")]([ExtResource("6_choun"), ExtResource("7_ya4ey"), ExtResource("10_choun")])
+
+[node name="normal_chest3" parent="Chests" instance=ExtResource("3_sugp2")]
+position = Vector2(73, -482)
+number_of_items = 3
+items = Array[ExtResource("5_85g3d")]([ExtResource("6_choun"), ExtResource("7_ya4ey"), ExtResource("10_choun")])

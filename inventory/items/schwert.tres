@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=5 format=3 uid="uid://c7cb0iabg662h"]
+
+[ext_resource type="Script" uid="uid://buhkkdpg0w5uy" path="res://inventory/inventory_item.gd" id="1_eygiu"]
+[ext_resource type="Script" uid="uid://bhdse8cxxdax" path="res://item_effects.gd" id="1_mdq23"]
+[ext_resource type="Texture2D" uid="uid://chemp1k1ao8li" path="res://assets/items/Item_01.png" id="2_mdq23"]
+
+[sub_resource type="Resource" id="Resource_u25np"]
+script = ExtResource("1_mdq23")
+add_damage = 10
+add_attack_range = 0
+add_speed = 0.0
+metadata/_custom_type_script = "uid://bhdse8cxxdax"
+
+[resource]
+script = ExtResource("1_eygiu")
+name = "Schwert"
+texture = ExtResource("2_mdq23")
+effects = SubResource("Resource_u25np")
+metadata/_custom_type_script = "uid://buhkkdpg0w5uy"

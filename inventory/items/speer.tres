@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=5 format=3 uid="uid://bvl3osaljuu5o"]
+
+[ext_resource type="Script" uid="uid://buhkkdpg0w5uy" path="res://inventory/inventory_item.gd" id="1_0gam4"]
+[ext_resource type="Script" uid="uid://bhdse8cxxdax" path="res://item_effects.gd" id="1_faivw"]
+[ext_resource type="Texture2D" uid="uid://cybl7n2t1iwq7" path="res://assets/items/Item_04.png" id="2_faivw"]
+
+[sub_resource type="Resource" id="Resource_pkvif"]
+script = ExtResource("1_faivw")
+add_damage = 0
+add_attack_range = 50
+add_speed = 0.0
+metadata/_custom_type_script = "uid://bhdse8cxxdax"
+
+[resource]
+script = ExtResource("1_0gam4")
+name = "speer"
+texture = ExtResource("2_faivw")
+effects = SubResource("Resource_pkvif")
+metadata/_custom_type_script = "uid://buhkkdpg0w5uy"

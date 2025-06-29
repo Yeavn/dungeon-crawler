@@ -4,8 +4,9 @@ extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
 
-@export var number_of_items: int = randf_range(1, 5)
-@export var collision_shape: CollisionShape2D
+@export var number_of_items: int
+@export var items: Array[InvItem]
+@onready var collision_shape: CollisionShape2D = $Area2D/CollisionShape2D
 
 var opened = false
 
@@ -23,15 +24,16 @@ func open_chest():
 func drop_items():
 	var shape = collision_shape.shape as RectangleShape2D
 	var _spawn_area_size = shape.extents * 2
-	for i in number_of_items:
-		var item = item_scene.instantiate()
+	for i in range(number_of_items):
+		var item = randi_range(0, items.size() - 1)
+		var item_scene = item_scene.instantiate()
 		var offset = Vector2(
 			randf_range(-shape.extents.x, shape.extents.x),
 			randf_range(-shape.extents.y, shape.extents.y)
 		)
-		
-		item.global_position = global_position + offset
-		get_tree().current_scene.call_deferred("add_child", item)
+		item_scene.global_position = global_position + offset
+		get_tree().current_scene.add_child(item_scene)
+		item_scene.set_item(items[item])
 
 func _on_timer_timeout() -> void:
 	drop_items()

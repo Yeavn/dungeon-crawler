@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cep5on1ucr2i8"]
+
+[ext_resource type="Texture2D" uid="uid://cak1uj34dhi0a" path="res://assets/inventory/inventory-slot.png" id="1_6n5tk"]
+[ext_resource type="Script" uid="uid://yeljqon7o016" path="res://inventory/inventory_ui_slot.gd" id="1_uebyi"]
+
+[sub_resource type="GDScript" id="GDScript_fsjip"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="inventory_ui_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_uebyi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6n5tk")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+script = SubResource("GDScript_fsjip")
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(20, 23)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 17.0
+offset_bottom = 21.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "99"
+horizontal_alignment = 2

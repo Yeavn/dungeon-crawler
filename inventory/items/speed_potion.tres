@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=5 format=3 uid="uid://dko3y2e4f7eoi"]
+
+[ext_resource type="Script" uid="uid://bhdse8cxxdax" path="res://item_effects.gd" id="1_x1jaw"]
+[ext_resource type="Script" uid="uid://buhkkdpg0w5uy" path="res://inventory/inventory_item.gd" id="2_fkys6"]
+[ext_resource type="Texture2D" uid="uid://b0yesilid74x8" path="res://assets/items/Item_65.png" id="3_lsvkl"]
+
+[sub_resource type="Resource" id="Resource_fyay0"]
+script = ExtResource("1_x1jaw")
+add_damage = 0
+add_attack_range = 0
+add_speed = 25.0
+metadata/_custom_type_script = "uid://bhdse8cxxdax"
+
+[resource]
+script = ExtResource("2_fkys6")
+name = "speed_potion"
+texture = ExtResource("3_lsvkl")
+effects = SubResource("Resource_fyay0")
+metadata/_custom_type_script = "uid://buhkkdpg0w5uy"

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var inventory: Inv
 @export var speed = 150
 @export var damage = 50
 @export var attack_range = 50
@@ -60,3 +61,11 @@ func _physics_process(delta):
 	
 	get_input()
 	move_and_slide()
+	
+func collect(item):
+	inventory.insert(item)
+	
+func add_effects(effects: item_effects):
+	damage += effects.add_damage
+	attack_range += effects.add_attack_range
+	speed += effects.add_speed

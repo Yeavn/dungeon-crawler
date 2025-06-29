@@ -88,13 +88,12 @@ size = Vector2(28, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8e16"]
 size = Vector2(33.6948, 31.8734)
 
-[node name="normal_chest" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+[node name="normal_chest" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 collision_mask = 3
 script = ExtResource("1_7a5wq")
 item_scene = ExtResource("2_w8e16")
-number_of_items = 4
-collision_shape = NodePath("Area2D/CollisionShape2D")
+number_of_items = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(24, -16)
